@@ -10,7 +10,7 @@ import lombok.Data;
 public class Lead {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 150, nullable = false)

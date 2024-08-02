@@ -2,6 +2,7 @@ package com.futurodev.crm.service;
 
 import com.futurodev.crm.dto.LeadRequestDto;
 import com.futurodev.crm.dto.LeadResponseDto;
+import com.futurodev.crm.exception.error.NotFoundException;
 import com.futurodev.crm.model.Lead;
 import com.futurodev.crm.repository.LeadRepository;
 import lombok.RequiredArgsConstructor;
@@ -56,7 +57,7 @@ public class LeadServiceImpl implements LeadService {
 
     private Lead findEntityById(Long id) {
         return this.leadRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Lead not found"));
+                .orElseThrow(() -> new NotFoundException("Lead not found"));
     }
 
     private LeadResponseDto mapToResponse(Lead lead) {

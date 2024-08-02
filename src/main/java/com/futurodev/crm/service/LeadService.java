@@ -4,6 +4,8 @@ import com.futurodev.crm.dto.LeadRequestDto;
 import com.futurodev.crm.dto.LeadResponseDto;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
+
 public interface LeadService {
 
     LeadResponseDto create(LeadRequestDto dto);

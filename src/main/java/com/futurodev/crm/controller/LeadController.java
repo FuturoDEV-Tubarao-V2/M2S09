@@ -5,7 +5,11 @@ import com.futurodev.crm.dto.LeadResponseDto;
 import com.futurodev.crm.service.LeadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,6 +19,7 @@ public class LeadController {
     private final LeadService leadService;
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public LeadResponseDto create(@RequestBody LeadRequestDto dto) {
         return leadService.create(dto);
     }
@@ -34,9 +39,11 @@ public class LeadController {
         return leadService.findById(id);
     }
 
+    //    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity delete(@PathVariable Long id) {
         leadService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
